@@ -1,0 +1,76 @@
+【09/26】
+
+#objective#
+Workbooks
+Workbooks("名称")
+ActiveWorkbook
+ThisWorkbook
+Sheets(" ")
+Sheet1      '第一个插入的sheet
+Sheets(n)   '排列顺序为n的sheet
+ActiveSheet
+Worksheet
+Cells       'all 单元格
+Range("单元格地址"）
+Cells(row, column)  'e.g. 单元格A2: row=2, column=1
+ActiveCell
+Selection   '选中的单元格区域
+
+#properties
+  '格式：objective.property
+Range(a1").Value = "abcd"
+Sheets(1).Name = "rename"
+Sheets("Sheet3").Range("B3").Interior.ColorIndex = 3
+   'interior为底色，font为文字颜色，above是将sheet3的B3格底色调整
+
+#action#
+  '也是objective.action 参数名：=参数值
+Range("a2").Copy Destination:=Range("b5")
+  'Range("a2").Copy Range("b5")
+
+#if判断#
+If    Then
+Else
+End If    '基本形式
+/
+If    Then
+Elseif   Then
+...   
+Else
+End if    '多条件判断用elseif  then
+/
+If    And    Then
+End If    '并列的条件用And连接
+
+#select判断#
+Select Case Range("B2").Value   'select case加对象.属性
+Case Is > 0
+  Range("C2") = "positive"
+Case Else
+  Range("C2") = "negative/zero"
+End Select
+    '消息栏显示文字：MsgBox "content"
+
+#IIf函数判断#
+对象 = IIf(判断条件，value if true, value if false)
+Range("A2") = IIf(Range("A1")>0, "positive","negative/zero")
+
+#interval判断#
+If Range("A1").Value <= 1000 Then
+  Range("A2") = 1%
+Elseif Range("A1").Value <= 3000 Then
+  Range("A2") = 3%
+Elseif Range("A1").Value <= 5000 Then
+  Range("A2") = 5%
+End If
+/
+Select Case Range("A1").Value
+  Case 0 To 1000         '格式：Case 条件／两端的interval时case后不加is
+    Range("A2") = 1%     '输出指令
+  Case 1001 To 3000
+    Range("A2") = 3%
+  Case Is > 3000
+    Range("A2") = 5%
+End Select
+  
+    
