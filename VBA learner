@@ -72,5 +72,9 @@ Select Case Range("A1").Value
   Case Is > 3000
     Range("A2") = 5%
 End Select
-  
+
+一点小疑问：单元格内容何时需要带""? value是数值，那其他格式需要特别标注吗？
+github很不科学的一点是根据更新的次数来，no matter how long your code is
+
+
     
