@@ -76,5 +76,49 @@ End Select
 一点小疑问：单元格内容何时需要带""? value是数值，那其他格式需要特别标注吗？
 github很不科学的一点是根据更新的次数来，no matter how long your code is
 
+【09/27】
+今天信息量有点大...需要整理一下
 
-    
+#for循环#:适合数值分布有规律的情况
+Dim x As Integer
+  For x = 2 To 100 Step 1      '不要漏掉step!!
+    Range("c" & x) = Range("a" & x) * Range("b" & x)    '字符和变量连接要加上&
+  Next x
+/
+  For x = 100 To 2 Step -2
+    ...
+  Next x
+
+#Each in 循环#:在一定区域查找
+Dim rg as Range
+  For Each rg In Range("A2:A8")
+    rg = rg.Offset(0,-1) * rg.Offset(0,-2)    'Offset指右侧单元格，-1即为左移一个.这句意为将左侧1格和左2的单元格相乘的值
+  Next rg
+
+  '若为多个不相邻区域： Range("a2:b4,c1:e7")   引号放在最两边
+
+#循环加判断#
+Dim rgg As Range   '在声明变量时不用指定位置
+For Each rgg In Range("D2:D8,C6:C9")
+  If rgg = "" Then
+    rgg = 0
+  End If
+Next rgg
+
+#do循环#
+Dim x As Integer
+  x = 1
+  Do
+    x = x+1
+    Cells(x,4) = Cells(x,2) * Cells(x,3)
+  Loop Until x = 10
+/
+Dim x As Integer
+  x = 1
+  Do While x < 18
+    x = x+1
+    Cells(x,4) = Cells(x,2) * Cells(x,3)
+  Loop
+
+
+
