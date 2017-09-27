@@ -119,6 +119,38 @@ Dim x As Integer
     x = x+1
     Cells(x,4) = Cells(x,2) * Cells(x,3)
   Loop
+／
+Dim x As Integer
+Do
+  x = x+1
+  If Cells(x+1,1) <> Cells(x,1)+1 Then   '一列数字不连续时在最后一个连续数字右侧显示"断点"
+    Cells(x,2) = "断点"
+    Exit Do
+  End If     '没搞懂为什么Exit Do和End If位置不能互换？？？？？
+Loop Until x = 10
+  
+#变量声明#
+  '格式： Dim 变量名 As 变量类型
+  指定变量：'Set 变量名 = 特定变量 e.g. Set rg = Range("a1")  但前面要先声明变量
 
+#公式和函数#  '其实不大明白这两样有什么不同
 
-
+／直接输入公式：
+  Range("a1") = "=b2 * b3"   '引号内为单元格填充内容
+／输入含变量公式：
+Dim x As Integer
+For x = 1 To 10
+  Range("a1") = "=b" & x & "*c" & x   '变量和字符之间用&连接，字符加引号，本句："=bx * cx"
+Next x
+／输入带引号公式：
+  Range("c8") = "=SUMIF(A2:A6,""B"",C1:C4)"   '所有单对引号变双倍
+／公式返回值：
+  Range(c8") = Evaluate("=SUMIF(A2:A6,""B"",C1:C4)")  '用evaluate括号内加公式
+／借用函数：
+  Range("c8") = Application.WorksheetFunction.SUM(Range("A2:A6"))   '因为是函数所以单元格表达方式要变成range（"位置"）
+／借用VBA函数：
+  Range("c8") = VBA.函数
+／自定义函数：
+Function fx()
+  fx = 
+End Function
