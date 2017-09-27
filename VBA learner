@@ -152,5 +152,5 @@ Next x
   Range("c8") = VBA.函数
 ／自定义函数：
 Function fx()
-  fx = 
+  fx = Application.Caller.Parent.Name    '取得当前worksheet名称
 End Function
